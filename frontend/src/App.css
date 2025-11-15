@@ -1,0 +1,15 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background);
+}
+
+.app > :not(nav) {
+  flex: 1;
+}
+
+main {
+  flex: 1;
+}
+  

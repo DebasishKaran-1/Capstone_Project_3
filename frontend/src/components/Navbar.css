@@ -1,0 +1,162 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--surface);
+  /* enhanced border with better color and shadow */
+  border-bottom: 2px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  /* changed to vibrant blue */
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  color: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.brand-text {
+  letter-spacing: -0.5px;
+}
+
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-link {
+  position: relative;
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  padding: 0.5rem 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  /* added gradient underline effect */
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transition: var(--transition);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.logout-btn {
+  color: var(--error);
+}
+
+.logout-btn::after {
+  background-color: var(--error);
+}
+
+.logout-btn:hover {
+  color: var(--error);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--text-primary);
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 1rem 1.5rem;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background-color: var(--surface);
+    border-bottom: 2px solid var(--border);
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transition);
+  }
+
+  .navbar-menu.open {
+    max-height: 400px;
+  }
+
+  .navbar-menu li {
+    width: 100%;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .navbar-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 1rem 1.5rem;
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-link::after {
+    display: none;
+  }
+
+  .nav-link.active {
+    background-color: var(--primary-light);
+    border-left: 4px solid var(--primary);
+    padding-left: calc(1.5rem - 4px);
+  }
+}
